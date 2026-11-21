@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Task Manager</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="page">
+    <div class="layout">
+
+      <!-- Left column: title, description, progress -->
+      <header class="intro">
+        <p class="eyebrow">CSE316 &middot; Fall 2026</p>
+        <h1>Student Task Manager</h1>
+        <p class="description">
+          Add your tasks, keep them in one list, and tick them off as you finish them.
+        </p>
+
+        <div class="progress">
+          <p class="progress-text">
+            <span class="progress-number" id="done-count">1</span>
+            of <span id="total-count">3</span> tasks completed
+          </p>
+          <div class="progress-bar">
+            <div class="progress-fill" id="progress-fill" style="width: 33%;"></div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Right column: task input and task list -->
+      <main class="board">
+        <div class="add-task">
+          <label for="task-input">New task</label>
+          <div class="add-row">
+            <input type="text" id="task-input" placeholder="e.g. Revise chapter 5 for the mid exam" autocomplete="off">
+            <button type="button" class="btn">Add Task</button>
+          </div>
+        </div>
+
+        <div class="list-header">
+          <h2>My Tasks</h2>
+          <span class="list-hint" id="pending-hint">2 pending</span>
+        </div>
+
+        <ul class="task-list" id="task-list">
+          <li>
+            <label class="task">
+              <input type="checkbox" class="check">
+              <span class="task-body">
+                <span class="task-name">Submit SP3 lab report</span>
+                <span class="task-meta">CSE316 &middot; Due 24 Nov</span>
+              </span>
+            </label>
+            <span class="status">Pending</span>
+          </li>
+          <li>
+            <label class="task">
+              <input type="checkbox" class="check">
+              <span class="task-body">
+                <span class="task-name">Prepare for DBMS quiz</span>
+                <span class="task-meta">Database Systems &middot; Quiz on 26 Nov</span>
+              </span>
+            </label>
+            <span class="status">Pending</span>
+          </li>
+          <li class="completed">
+            <label class="task">
+              <input type="checkbox" class="check" checked>
+              <span class="task-body">
+                <span class="task-name">Read Software Engineering chapter 4</span>
+                <span class="task-meta">Software Engineering &middot; Reading</span>
+              </span>
+            </label>
+            <span class="status">Completed</span>
+          </li>
+        </ul>
+      </main>
+
+    </div>
+  </div>
+</body>
+</html>

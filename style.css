@@ -1,0 +1,302 @@
+/* ---------- Colors and fonts used across the page ---------- */
+:root {
+  --paper: #f4f1ea;        /* page background */
+  --dot: #ddd6c8;          /* dot grid on the background */
+  --card: #fffdf8;         /* task board */
+  --ink: #1d2327;          /* main text */
+  --ink-soft: #626b6f;     /* secondary text */
+  --line: #e6dfd2;         /* borders and dividers */
+  --line-strong: #cfc6b5;  /* input border */
+  --accent: #2d5a4a;       /* bottle green */
+  --accent-soft: #e1ece6;
+  --pending-bg: #f8ecd4;
+  --pending-text: #8a5a12;
+  --serif: "Fraunces", Georgia, "Times New Roman", serif;
+  --sans: "IBM Plex Sans", "Segoe UI", Arial, sans-serif;
+}
+
+/* Include padding and border in every element's width */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: var(--sans);
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--ink);
+  background-color: var(--paper);
+  /* planner-style dot grid */
+  background-image: radial-gradient(var(--dot) 1px, transparent 1px);
+  background-size: 22px 22px;
+}
+
+/* ---------- Page layout ---------- */
+.page {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 64px 24px;
+}
+
+.intro {
+  margin-bottom: 32px;
+}
+
+.board {
+  padding: 32px;
+  background-color: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  box-shadow: 0 1px 0 var(--line), 0 18px 32px -24px rgba(29, 35, 39, 0.35);
+}
+
+/* ---------- Left column ---------- */
+.eyebrow {
+  margin: 0;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+h1 {
+  margin: 10px 0 16px 0;
+  font-family: var(--serif);
+  font-size: 46px;
+  font-weight: 600;
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+}
+
+.description {
+  margin: 0 0 32px 0;
+  color: var(--ink-soft);
+}
+
+.progress {
+  padding-top: 20px;
+  border-top: 1px solid var(--line-strong);
+}
+
+.progress-text {
+  margin: 0 0 12px 0;
+  font-size: 15px;
+  color: var(--ink-soft);
+}
+
+.progress-number {
+  margin-right: 2px;
+  font-family: var(--serif);
+  font-size: 34px;
+  line-height: 1;
+  color: var(--ink);
+}
+
+.progress-bar {
+  height: 6px;
+  overflow: hidden;
+  background-color: var(--line);
+  border-radius: 3px;
+}
+
+.progress-fill {
+  height: 100%;
+  background-color: var(--accent);
+  border-radius: 3px;
+  transition: width 0.3s ease;
+}
+
+/* ---------- Add-task form ---------- */
+.add-task label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+/* Flexbox: input and button in one row */
+.add-row {
+  display: flex;
+  gap: 10px;
+}
+
+.add-row input {
+  flex: 1;              /* input takes the remaining space */
+  height: 48px;
+  padding: 0 14px;
+  font: inherit;
+  color: var(--ink);
+  background-color: #ffffff;
+  border: 1px solid var(--line-strong);
+  border-radius: 8px;
+}
+
+.add-row input::placeholder {
+  color: #9a9f9c;
+}
+
+.add-row input:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-soft);
+}
+
+.btn {
+  flex-shrink: 0;       /* button keeps its size */
+  height: 48px;
+  padding: 0 22px;
+  font: inherit;
+  font-weight: 600;
+  color: #ffffff;
+  background-color: var(--ink);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+.btn:hover {
+  background-color: var(--accent);
+}
+
+.btn:focus-visible {
+  outline: 3px solid var(--accent-soft);
+  outline-offset: 2px;
+}
+
+/* ---------- Task list ---------- */
+.list-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-top: 36px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--line);
+}
+
+h2 {
+  margin: 0;
+  font-family: var(--serif);
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.list-hint {
+  font-size: 14px;
+  color: var(--ink-soft);
+}
+
+.task-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* Flexbox: checkbox and text on the left, status on the right */
+.task-list li {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.task-list li:last-child {
+  border-bottom: none;
+}
+
+.task {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  flex: 1;
+  min-width: 0;
+  cursor: pointer;
+}
+
+.task-body {
+  min-width: 0;
+}
+
+.task-name {
+  display: block;
+  font-weight: 500;
+  overflow-wrap: anywhere;   /* long task names wrap instead of overflowing */
+}
+
+.task-meta {
+  display: block;
+  margin-top: 2px;
+  font-size: 13px;
+  color: var(--ink-soft);
+}
+
+/* Round checkbox */
+.check {
+  appearance: none;
+  display: grid;
+  place-content: center;
+  flex-shrink: 0;
+  width: 22px;
+  height: 22px;
+  margin: 1px 0 0 0;
+  background-color: #ffffff;
+  border: 1.5px solid #a3a89f;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.check::after {
+  content: "";
+  width: 5px;
+  height: 10px;
+  margin-top: -2px;
+  border: solid #ffffff;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+  opacity: 0;
+}
+
+.check:hover {
+  border-color: var(--accent);
+}
+
+.check:checked {
+  background-color: var(--accent);
+  border-color: var(--accent);
+}
+
+.check:checked::after {
+  opacity: 1;
+}
+
+.check:focus-visible {
+  outline: 3px solid var(--accent-soft);
+  outline-offset: 2px;
+}
+
+/* Status pill */
+.status {
+  flex-shrink: 0;
+  padding: 3px 10px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--pending-text);
+  background-color: var(--pending-bg);
+  border-radius: 999px;
+}
+
+/* Completed task */
+.completed .task-name {
+  color: var(--ink-soft);
+  text-decoration: line-through;
+  text-decoration-color: var(--line-strong);
+}
+
+.completed .status {
+  color: var(--accent);
+  background-color: var(--accent-soft);
+}
