@@ -32,15 +32,16 @@
         </div>
       </header>
 
-      <!-- Right column: task input and task list -->
+      <!-- Right column: add-task form and task list -->
       <main class="board">
-        <div class="add-task">
+        <form class="add-task" id="task-form">
           <label for="task-input">New task</label>
           <div class="add-row">
             <input type="text" id="task-input" placeholder="e.g. Revise chapter 5 for the mid exam" autocomplete="off">
-            <button type="button" class="btn">Add Task</button>
+            <button type="submit" class="btn">Add Task</button>
           </div>
-        </div>
+          <p class="warning" id="warning" role="alert" hidden></p>
+        </form>
 
         <div class="list-header">
           <h2>My Tasks</h2>
@@ -79,9 +80,13 @@
             <span class="status">Completed</span>
           </li>
         </ul>
+
+        <p class="list-tip">Tick the circle next to a task to mark it as completed.</p>
       </main>
 
     </div>
   </div>
+
+  <script src="script.js"></script>
 </body>
 </html>
