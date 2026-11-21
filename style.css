@@ -34,16 +34,27 @@ body {
 
 /* ---------- Page layout ---------- */
 .page {
-  max-width: 680px;
+  width: 100%;
+  max-width: 1000px;
   margin: 0 auto;
   padding: 64px 24px;
 }
 
+/* Desktop: two columns side by side */
+.layout {
+  display: flex;
+  align-items: flex-start;
+  gap: 48px;
+}
+
 .intro {
-  margin-bottom: 32px;
+  flex: 0 0 300px;      /* fixed-width left column */
+  padding-top: 8px;
 }
 
 .board {
+  flex: 1;              /* right column takes the remaining space */
+  min-width: 0;
   padding: 32px;
   background-color: var(--card);
   border: 1px solid var(--line);
@@ -124,6 +135,7 @@ h1 {
 
 .add-row input {
   flex: 1;              /* input takes the remaining space */
+  min-width: 0;         /* allows the input to shrink on narrow screens */
   height: 48px;
   padding: 0 14px;
   font: inherit;
@@ -299,4 +311,61 @@ h2 {
 .completed .status {
   color: var(--accent);
   background-color: var(--accent-soft);
+}
+
+/* ---------- Media query 1: tablets and phones (760px or less) ---------- */
+@media (max-width: 760px) {
+  .page {
+    padding: 32px 16px;
+  }
+
+  /* Stack the two columns */
+  .layout {
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .intro {
+    flex: none;
+    width: 100%;
+    padding-top: 0;
+  }
+
+  h1 {
+    font-size: 36px;
+  }
+
+  .description {
+    margin-bottom: 20px;
+  }
+
+  .board {
+    width: 100%;
+    padding: 20px 16px;
+  }
+}
+
+/* ---------- Media query 2: small phones (420px or less) ---------- */
+@media (max-width: 420px) {
+  h1 {
+    font-size: 32px;
+  }
+
+  /* Stack the input and button */
+  .add-row {
+    flex-direction: column;
+  }
+
+  .add-row input {
+    flex: none;         /* keep the 48px height when stacked */
+    width: 100%;
+  }
+
+  .btn {
+    width: 100%;
+  }
+
+  .task-list li {
+    gap: 10px;
+  }
 }
